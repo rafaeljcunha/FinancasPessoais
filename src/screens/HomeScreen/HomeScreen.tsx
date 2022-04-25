@@ -1,17 +1,17 @@
 import React from 'react';
-import {StatusBar, View} from 'react-native';
-import {color} from '../assets/tokens/colors';
-import {HomeBalance, HomeHeader, HomeLastTransactions} from '../components';
+import {StatusBar} from 'react-native';
+import {HomeBalance, HomeHeader, HomeLastTransactions} from './components';
+import {WrapperHome} from './styles';
 
 export default function HomeScreen() {
   return (
     <React.Fragment>
       <StatusBar barStyle="light-content" />
-      <View style={{flex: 1, backgroundColor: color.blue[40]}}>
+      <WrapperHome>
         <HomeHeader />
         <HomeBalance />
         <HomeLastTransactions />
-      </View>
+      </WrapperHome>
     </React.Fragment>
   );
 }
