@@ -8,7 +8,7 @@ import {
   LastTransactionsWrapper,
   TransactionList,
 } from './styles';
-import {CustomText, Button, Transaction} from '../../../components/';
+import {CustomText, CustomButton, Transaction} from '../../../components/';
 
 export function HomeLastTransactions() {
   return (
@@ -17,7 +17,7 @@ export function HomeLastTransactions() {
         <CustomText fontSize={18} fontWeight="bold" color="black">
           Últimos lançamentos
         </CustomText>
-        <Button
+        <CustomButton
           bgColor={color.blue[40]}
           paddingHorizontal={8}
           paddingVertical={4}
@@ -28,7 +28,7 @@ export function HomeLastTransactions() {
           <TransactionIconWrapper>
             <AntDesign name="plus" color={'white'} size={18} />
           </TransactionIconWrapper>
-        </Button>
+        </CustomButton>
       </LastTransactionHeader>
       <TransactionList showsVerticalScrollIndicator={false}>
         {transactionData.map((value, index) => (

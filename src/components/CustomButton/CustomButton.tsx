@@ -7,7 +7,7 @@ interface IButtonProps {
   borderRadius: number;
 }
 
-export const Button = styled.TouchableOpacity<Partial<IButtonProps>>`
+export const CustomButton = styled.TouchableOpacity<Partial<IButtonProps>>`
   flex-direction: row;
   align-items: center;
   justify-content: center;
