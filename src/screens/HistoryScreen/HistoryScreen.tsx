@@ -1,17 +1,11 @@
 import React, {useState} from 'react';
-import {ScrollView, StatusBar, View} from 'react-native';
-import {
-  HistoryCard,
-  HistoryCardContent,
-  HistoryCardTitle,
-  HistoryHeader,
-} from '../components';
-import HistoryTab from '../components/History/Tabs';
+import {StatusBar} from 'react-native';
+import {HistoryCard, HistoryHeader, HistoryTab} from './components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {color} from '../assets/tokens/colors';
-import {transactionData} from '../storage/transaction-data';
+import {color} from '../../assets/tokens/colors';
+import {transactionData} from '../../storage/transaction-data';
+import {HistoryList} from './styles';
 
 const data = [
   {
@@ -67,6 +61,10 @@ const tabData = [
   },
 ];
 
+const contentContainerStyle = {
+  paddingBottom: 24,
+};
+
 export default function HistoryScreen() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [tabIndex, setTabIndex] = useState(2);
@@ -88,25 +86,17 @@ export default function HistoryScreen() {
     <React.Fragment>
       <StatusBar barStyle="dark-content" />
       <HistoryHeader />
-      <ScrollView
+      <HistoryTab
+        tabData={tabData}
+        setTabIndex={(index: number) => setTabIndex(index)}
+        tabIndex={tabIndex}
+      />
+      <HistoryList
         showsVerticalScrollIndicator={false}
-        style={{
-          flex: 1,
-          backgroundColor: color.white[20],
-          paddingHorizontal: 16,
-        }}
-        contentContainerStyle={{
-          paddingBottom: 24,
-        }}>
-        <HistoryTab
-          tabData={tabData}
-          setTabIndex={(index: number) => setTabIndex(index)}
-          tabIndex={tabIndex}
-        />
-
+        contentContainerStyle={contentContainerStyle}>
         {filterData.map((value, index) => (
           <HistoryCard
-            key={index}
+            key={`${value}-${index}`}
             icon={value.icon}
             title={value.title}
             historyData={value.historyData}
@@ -116,7 +106,7 @@ export default function HistoryScreen() {
             pressedItem={activeIndex === index}
           />
         ))}
-      </ScrollView>
+      </HistoryList>
     </React.Fragment>
   );
 }
