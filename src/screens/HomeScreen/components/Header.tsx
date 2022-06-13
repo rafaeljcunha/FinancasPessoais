@@ -1,4 +1,5 @@
 import React from 'react';
+import {IMAGES} from '../../../assets/tokens/images';
 import {CustomText} from '../../../components';
 import {
   Avatar,
@@ -13,7 +14,7 @@ export function HomeHeader() {
     <HeaderWrapper>
       <HeaderContent>
         <HeaderAvatarWrapper>
-          <Avatar source={require('../../../assets/images/avatar.jpeg')} />
+          <Avatar source={IMAGES.avatar} />
         </HeaderAvatarWrapper>
         <HeaderGreetingWrapper>
           <CustomText fontSize={18} color="white">

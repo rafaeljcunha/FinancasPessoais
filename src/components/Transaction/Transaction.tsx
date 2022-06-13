@@ -2,6 +2,8 @@ import React from 'react';
 import {View} from 'react-native';
 import {CustomText} from '..';
 import {color} from '../../assets/tokens/colors';
+import {IMAGES} from '../../assets/tokens/images';
+import {TTransaction} from '../../types/history.types';
 import {
   TransactionInfo,
   TransactionPrice,
@@ -9,11 +11,21 @@ import {
   TransactionImage,
 } from './styles';
 
-export function Transaction({value, index, marginTop = 0, marginBottom = 0}) {
+interface ITransactionProps {
+  value: TTransaction;
+  marginTop?: number;
+  marginBottom?: number;
+}
+
+export function Transaction({
+  value,
+  marginTop = 0,
+  marginBottom = 0,
+}: ITransactionProps) {
   return (
     <TransactionWrapper marginTop={marginTop} marginBottom={marginBottom}>
       <TransactionInfo>
-        <TransactionImage source={require('../../assets/images/netflix.png')} />
+        <TransactionImage source={IMAGES.netflix} />
         <View>
           <CustomText fontWeight="bold">{value.title}</CustomText>
           <CustomText fontSize={14} color={color.gray[100]}>
