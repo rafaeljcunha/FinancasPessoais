@@ -2,6 +2,12 @@ import React from 'react';
 import {HistoryCardContent, HistoryCardTitle} from './index';
 import {HistoryCardWrapper} from './styles';
 import {Divider} from '../../../components';
+import {TData} from '../../../types/history.types';
+
+interface IHistoryCard extends Pick<TData, 'title' | 'icon' | 'historyData'> {
+  pressedItem: boolean;
+  onPressItem(): void;
+}
 
 export function HistoryCard({
   title,
@@ -9,7 +15,7 @@ export function HistoryCard({
   onPressItem,
   icon,
   historyData,
-}) {
+}: IHistoryCard) {
   return (
     <HistoryCardWrapper>
       <HistoryCardTitle

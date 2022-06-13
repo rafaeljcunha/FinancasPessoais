@@ -1,6 +1,7 @@
 import React from 'react';
 import {color} from '../../../assets/tokens/colors';
 import {CustomText} from '../../../components';
+import {TTabData} from '../../../types/history.types';
 import {DEVICE_SCREEN_WIDTH} from '../../../utils/device-info';
 import {
   HistoryTabContentItem,
@@ -8,13 +9,21 @@ import {
   HistoryTabWrapper,
 } from './styles';
 
-const width = DEVICE_SCREEN_WIDTH / 3;
+interface IHistoryTabProps {
+  tabData: TTabData[];
+  setTabIndex(index: number): void;
+  tabIndex: number;
+}
 
-export function HistoryTab({tabData, setTabIndex, tabIndex}) {
+const DIVIDING_PROPORTION = 3;
+
+const width = DEVICE_SCREEN_WIDTH / DIVIDING_PROPORTION;
+
+export function HistoryTab({tabData, setTabIndex, tabIndex}: IHistoryTabProps) {
   return (
     <HistoryTabWrapper>
       <HistoryTabContentItem>
-        {tabData.map((value, index) => (
+        {tabData.map((value: TTabData, index: number) => (
           <HistoryTabItem
             key={`${value}-${index}`}
             onPress={() => setTabIndex(index)}

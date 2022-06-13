@@ -1,86 +1,26 @@
 import React, {useState} from 'react';
 import {StatusBar} from 'react-native';
 import {HistoryCard, HistoryHeader, HistoryTab} from './components';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {color} from '../../assets/tokens/colors';
-import {transactionData} from '../../storage/transaction-data';
-import {HistoryList} from './styles';
-
-const data = [
-  {
-    title: 'Assinaturas',
-    icon: <AntDesign name="play" size={32} color={color.blue[50]} />,
-    category: 'subscriptons',
-    historyData: transactionData,
-  },
-  {
-    title: 'Carro',
-    icon: <FontAwesome name="car" size={32} color={color.blue[40]} />,
-    category: 'vehicles',
-    historyData: transactionData,
-  },
-  {
-    title: 'Financiamento',
-    icon: <FontAwesome name="home" size={32} color={color.blue[60]} />,
-    category: 'financing',
-    historyData: transactionData,
-  },
-  {
-    title: 'Samsung Card',
-    icon: <FontAwesome name="credit-card" size={32} color="black" />,
-    category: 'credit-card',
-    historyData: transactionData,
-  },
-  {
-    title: 'CrediCard',
-    icon: <FontAwesome name="credit-card" size={32} color="black" />,
-    category: 'credit-card',
-    historyData: transactionData,
-  },
-  {
-    title: 'Picpay',
-    icon: <FontAwesome name="credit-card" size={32} color="black" />,
-    category: 'credit-card',
-    historyData: transactionData,
-  },
-];
-
-const tabData = [
-  {
-    title: 'Crédito',
-    value: 'credit-card',
-  },
-  {
-    title: 'Outros',
-    value: 'others',
-  },
-  {
-    title: 'Todos',
-    value: 'All',
-  },
-];
-
-const contentContainerStyle = {
-  paddingBottom: 24,
-};
+import {contentContainerStyle, HistoryList} from './styles';
+import {ECategory, TData} from '../../types/history.types';
+import {historyData, tabData} from '../../mock/history';
 
 export default function HistoryScreen() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [tabIndex, setTabIndex] = useState(2);
+  const [tabIndex, setTabIndex] = useState(0);
 
-  function logic(value) {
+  function tabContentFilter(value: TData) {
     switch (tabData[tabIndex].value) {
-      case 'credit-card':
-        return value.category === 'credit-card';
-      case 'others':
-        return value.category !== 'credit-card';
+      case ECategory.CREDITCARD:
+        return value.category === ECategory.CREDITCARD;
+      case ECategory.OTHERS:
+        return value.category !== ECategory.CREDITCARD;
       default:
         return value;
     }
   }
 
-  const filterData = data.filter(logic);
+  const filterData = historyData.filter(tabContentFilter);
 
   return (
     <React.Fragment>

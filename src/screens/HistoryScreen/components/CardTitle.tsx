@@ -1,9 +1,20 @@
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {CustomText} from '../../../components';
+import {TData} from '../../../types/history.types';
 import {HistoryCardTitleInfo, HistoryCardTitleWrapper} from './styles';
 
-export function HistoryCardTitle({title, icon, onPressItem, pressedItem}) {
+interface IHistoryCardTitleProps extends Pick<TData, 'title' | 'icon'> {
+  onPressItem(): void;
+  pressedItem: boolean;
+}
+
+export function HistoryCardTitle({
+  title,
+  icon,
+  onPressItem,
+  pressedItem,
+}: IHistoryCardTitleProps) {
   return (
     <HistoryCardTitleWrapper onPress={onPressItem}>
       <HistoryCardTitleInfo>
