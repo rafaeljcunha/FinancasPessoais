@@ -1,6 +1,6 @@
 ## APP DE FINANÇAS (Em Desenvolvimento) ##
 
-Este app é para administração das próprias despesas e receitas. Este é apenas o frontend que esta sendo desenvolvido com os dados mockados conforme a necessidade. O app será simples para que o MVP sejá de dominio público, após a conclusão do MVP, este projeto será replicado de forma privada para a criação de outras features e integração com o backend, que serão disponibilizados posteriormente nas principais lojas de aplicativos.
+Este app é para administração das próprias despesas e receitas. Este é apenas o frontend que esta sendo desenvolvido com os dados mockados conforme a necessidade. O app será simples para que o MVP seja de dominio público, após a conclusão do MVP, este projeto será replicado de forma privada para a criação de outras features e integração com o backend, que serão disponibilizados posteriormente nas principais lojas de aplicativos.
 
 ### Como usar ###
 
